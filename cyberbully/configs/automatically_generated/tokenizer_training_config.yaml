@@ -1,11 +1,11 @@
 infrastructure:
-  project_id: cybulde
+  project_id: cyberbully
   zone: europe-west4-b
   network: default
-data_parquet_path: gs://emkademy/cybulde/data/processed/rebalanced_splits/train.parquet
+data_parquet_path: gs://emkademy/cyberbully/data/processed/rebalanced_splits/train.parquet
 text_column_name: cleaned_text
 tokenizer:
-  _target_: cybulde.tokenization.tokenizers.HuggingFaceTokenizer
+  _target_: cyberbully.tokenization.tokenizers.HuggingFaceTokenizer
   pre_tokenizer:
     _target_: tokenizers.pre_tokenizers.Whitespace
   model:
@@ -22,11 +22,11 @@ tokenizer:
     show_progress: true
     min_frequency: 0
     special_tokens:
-    - '[UNK]'
-    - '[CLS]'
-    - '[SEP]'
-    - '[PAD]'
-    - '[MASK]'
+      - '[UNK]'
+      - '[CLS]'
+      - '[SEP]'
+      - '[PAD]'
+      - '[MASK]'
     initial_alphabet: []
   normalizer: null
   decoder: null
@@ -36,5 +36,5 @@ tokenizer:
   sep_token: '[SEP]'
   pad_token: '[PAD]'
   mask_token: '[MASK]'
-docker_image_name: europe-west4-docker.pkg.dev/cybulde/cybulde/cybulde-data-processing
+docker_image_name: europe-west4-docker.pkg.dev/cyberbully/cyberbully/cyberbully-data-processing
 docker_image_tag: 15a561f8-4091-417d-81b6-fb63f9747d58

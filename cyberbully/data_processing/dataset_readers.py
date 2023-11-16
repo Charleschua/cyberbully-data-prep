@@ -8,8 +8,8 @@ import dask.dataframe as dd
 from dask_ml.model_selection import train_test_split
 from dvc.api import get_url
 
-from cybulde.utils.data_utils import get_repo_address_with_access_token, repartition_dataframe
-from cybulde.utils.utils import get_logger
+from cyberbully.utils.data_utils import get_repo_address_with_access_token, repartition_dataframe
+from cyberbully.utils.utils import get_logger
 
 
 class DatasetReader(ABC):

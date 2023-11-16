@@ -17,8 +17,8 @@ from hydra import compose, initialize
 from hydra.types import TaskFunction
 from omegaconf import DictConfig, OmegaConf
 
-from cybulde.config_schemas import data_processing_config_schema, tokenizer_training_config_schema
-from cybulde.utils.io_utils import open_file
+from cyberbully.config_schemas import data_processing_config_schema, tokenizer_training_config_schema
+from cyberbully.utils.io_utils import open_file
 
 
 def get_config(config_path: str, config_name: str) -> TaskFunction:
@@ -62,7 +62,7 @@ def setup_config() -> None:
 
 
 def setup_logger() -> None:
-    with open("./cybulde/configs/hydra/job_logging/custom.yaml", "r") as stream:
+    with open("./cyberbully/configs/hydra/job_logging/custom.yaml", "r") as stream:
         config = yaml.load(stream, Loader=yaml.FullLoader)
     logging.config.dictConfig(config)
 

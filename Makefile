@@ -13,14 +13,14 @@ else
 endif
 
 SERVICE_NAME = app
-CONTAINER_NAME = cybulde-data-processing-container
+CONTAINER_NAME = cyberbully-data-processing-container
 
-DIRS_TO_VALIDATE = cybulde
+DIRS_TO_VALIDATE = cyberbully
 DOCKER_COMPOSE_RUN = $(DOCKER_COMPOSE_COMMAND) run --rm $(SERVICE_NAME)
 DOCKER_COMPOSE_EXEC = $(DOCKER_COMPOSE_COMMAND) exec $(SERVICE_NAME)
 
-LOCAL_DOCKER_IMAGE_NAME = cybulde-data-processing
-GCP_DOCKER_IMAGE_NAME = europe-west4-docker.pkg.dev/cybulde/cybulde/cybulde-data-processing
+LOCAL_DOCKER_IMAGE_NAME = cyberbully-data-processing
+GCP_DOCKER_IMAGE_NAME = europe-west4-docker.pkg.dev/cyberbully/cyberbully/cyberbully-data-processing
 GCP_DOCKER_IMAGE_TAG := $(strip $(shell uuidgen))
 
 export
@@ -31,35 +31,35 @@ guard-%:
 
 ## Generate final config. CONFIG_NAME=<config_name> has to be providded. For overrides use: OVERRIDES=<overrides>
 generate-final-config: up guard-CONFIG_NAME
-	$(DOCKER_COMPOSE_EXEC) python ./cybulde/generate_final_config.py --config-name $${CONFIG_NAME} --overrides docker_image_name=$(GCP_DOCKER_IMAGE_NAME) docker_image_tag=$(GCP_DOCKER_IMAGE_TAG) $${OVERRIDES}
+	$(DOCKER_COMPOSE_EXEC) python ./cyberbully/generate_final_config.py --config-name $${CONFIG_NAME} --overrides docker_image_name=$(GCP_DOCKER_IMAGE_NAME) docker_image_tag=$(GCP_DOCKER_IMAGE_TAG) $${OVERRIDES}
 
 ## Generate final data processing config. For overrides use: OVERRIDES=<overrides>
 generate-final-data-processing-config: up
-	$(DOCKER_COMPOSE_EXEC) python ./cybulde/generate_final_config.py --config-name data_processing_config --overrides docker_image_name=$(GCP_DOCKER_IMAGE_NAME) docker_image_tag=$(GCP_DOCKER_IMAGE_TAG) $${OVERRIDES}
+	$(DOCKER_COMPOSE_EXEC) python ./cyberbully/generate_final_config.py --config-name data_processing_config --overrides docker_image_name=$(GCP_DOCKER_IMAGE_NAME) docker_image_tag=$(GCP_DOCKER_IMAGE_TAG) $${OVERRIDES}
 
 ## Generate final tokenizer training config. For overrides use: OVERRIDES=<overrides>
 generate-final-tokenizer-training-config: up
-	$(DOCKER_COMPOSE_EXEC) python ./cybulde/generate_final_config.py --config-name tokenizer_training_config --overrides docker_image_name=$(GCP_DOCKER_IMAGE_NAME) docker_image_tag=$(GCP_DOCKER_IMAGE_TAG) $${OVERRIDES}
+	$(DOCKER_COMPOSE_EXEC) python ./cyberbully/generate_final_config.py --config-name tokenizer_training_config --overrides docker_image_name=$(GCP_DOCKER_IMAGE_NAME) docker_image_tag=$(GCP_DOCKER_IMAGE_TAG) $${OVERRIDES}
 
 ## Processes raw data
 process-data: generate-final-data-processing-config push
-	$(DOCKER_COMPOSE_EXEC) python ./cybulde/process_data.py
+	$(DOCKER_COMPOSE_EXEC) python ./cyberbully/process_data.py
 
 ## Train a tokenizer
 train-tokenizer: generate-final-tokenizer-training-config push
-	$(DOCKER_COMPOSE_EXEC) python ./cybulde/train_tokenizer.py
+	$(DOCKER_COMPOSE_EXEC) python ./cyberbully/train_tokenizer.py
 
 ## Processes raw data
 local-process-data: generate-final-data-processing-config
-	$(DOCKER_COMPOSE_EXEC) python ./cybulde/process_data.py
+	$(DOCKER_COMPOSE_EXEC) python ./cyberbully/process_data.py
 
 ## Train a tokenizer locally
 local-train-tokenizer: generate-final-tokenizer-training-config
-	$(DOCKER_COMPOSE_EXEC) python ./cybulde/train_tokenizer.py
+	$(DOCKER_COMPOSE_EXEC) python ./cyberbully/train_tokenizer.py
 
 ## Processes raw data
 temp-local-process-data: generate-final-data-processing-config
-	$(DOCKER_COMPOSE_EXEC) python ./cybulde/temp_process_data.py
+	$(DOCKER_COMPOSE_EXEC) python ./cyberbully/temp_process_data.py
 
 ## Push docker image to GCP artifact registery
 push: build

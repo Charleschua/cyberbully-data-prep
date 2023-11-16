@@ -1,6 +1,6 @@
 import pandas as pd
 
-test_df = pd.read_parquet("gs://cybulde/data/processed/rebalanced_splits/dev.parquet")
+test_df = pd.read_parquet("gs://cyberbully/data/processed/rebalanced_splits/dev.parquet")
 
 print(test_df.shape)
 print(test_df.columns.values)

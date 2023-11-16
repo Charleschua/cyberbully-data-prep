@@ -5,8 +5,8 @@ import dask.dataframe as dd
 import psutil
 import pandas as pd
 
-from cybulde.utils.gcp_utils import access_secret_version
-from cybulde.utils.utils import run_shell_command
+from cyberbully.utils.gcp_utils import access_secret_version
+from cyberbully.utils.utils import run_shell_command
 
 
 def get_cmd_to_get_raw_data(

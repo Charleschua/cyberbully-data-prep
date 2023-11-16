@@ -5,7 +5,7 @@ from omegaconf import MISSING
 from pydantic import validator
 from pydantic.dataclasses import dataclass
 
-from cybulde.utils.schema_utils import validate_config_parameter_is_in
+from cyberbully.utils.schema_utils import validate_config_parameter_is_in
 
 SPLIT_DELIMITER_BEHAVIOUR_OPTIONS = {"removed", "isolated", "merged_with_previous", "merged_with_next", "contiguous"}
 

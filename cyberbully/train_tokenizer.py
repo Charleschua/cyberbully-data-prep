@@ -6,13 +6,13 @@ import pandas as pd
 
 from hydra.utils import instantiate
 
-from cybulde.config_schemas.tokenizer_training_config_schema import TokenizerTrainingConfig
-from cybulde.utils.config_utils import get_pickle_config
-from cybulde.utils.io_utils import write_yaml_file
-from cybulde.utils.utils import get_logger
+from cyberbully.config_schemas.tokenizer_training_config_schema import TokenizerTrainingConfig
+from cyberbully.utils.config_utils import get_pickle_config
+from cyberbully.utils.io_utils import write_yaml_file
+from cyberbully.utils.utils import get_logger
 
 
-@get_pickle_config(config_path="cybulde/configs/automatically_generated", config_name="tokenizer_training_config")
+@get_pickle_config(config_path="cyberbully/configs/automatically_generated", config_name="tokenizer_training_config")
 def train_tokenizer(config: TokenizerTrainingConfig) -> None:
     logger = get_logger(Path(__file__).name)
 

@@ -7,12 +7,12 @@ import dask.dataframe as dd
 from dask.distributed import Client
 from hydra.utils import instantiate
 
-from cybulde.config_schemas.data_processing.dataset_cleaners_schema import DatasetCleanerManagerConfig
-from cybulde.config_schemas.data_processing_config_schema import DataProcessingConfig
-from cybulde.utils.config_utils import custom_instantiate, get_pickle_config
-from cybulde.utils.data_utils import filter_based_on_minimum_number_of_words
-from cybulde.utils.io_utils import write_yaml_file
-from cybulde.utils.utils import get_logger
+from cyberbully.config_schemas.data_processing.dataset_cleaners_schema import DatasetCleanerManagerConfig
+from cyberbully.config_schemas.data_processing_config_schema import DataProcessingConfig
+from cyberbully.utils.config_utils import custom_instantiate, get_pickle_config
+from cyberbully.utils.data_utils import filter_based_on_minimum_number_of_words
+from cyberbully.utils.io_utils import write_yaml_file
+from cyberbully.utils.utils import get_logger
 
 
 def process_raw_data(
@@ -22,7 +22,7 @@ def process_raw_data(
     return processed_partition
 
 
-@get_pickle_config(config_path="cybulde/configs/automatically_generated", config_name="data_processing_config")
+@get_pickle_config(config_path="cyberbully/configs/automatically_generated", config_name="data_processing_config")
 def process_data(config: DataProcessingConfig) -> None:
     logger = get_logger(Path(__file__).name)
     logger.info("Processing raw data...")

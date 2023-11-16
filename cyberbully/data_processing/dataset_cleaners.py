@@ -8,7 +8,7 @@ from abc import ABC, abstractmethod
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
-from cybulde.utils.utils import SpellCorrectionModel
+from cyberbully.utils.utils import SpellCorrectionModel
 
 
 class DatasetCleaner(ABC):

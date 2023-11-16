@@ -1,18 +1,18 @@
-version: "3.8"
+version: "3.7"
 
 services:
   app:
     user: "${USER_ID:-1000}"
-    hostname: "${HOST_NAME:-emkademy}"
-    image: cybulde-data-processing
-    container_name: cybulde-data-processing-container
+    hostname: "${HOST_NAME:-cyberbully}"
+    image: cyberbully-data-processing
+    container_name: cyberbully-data-processing-container
     environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=./creds/cybulde-b0d2e22dab21.json
+      - GOOGLE_APPLICATION_CREDENTIALS=./creds/cyberbully-b0d2e22dab21.json
     build:
       context: .
       dockerfile: ./docker/Dockerfile
       args:
-        USER_NAME: "${USER_NAME:-kyuksel}"
+        USER_NAME: "${USER_NAME:-charles}"
         USER_ID: "${USER_ID:-1000}"
     volumes:
       - ./:/app/
